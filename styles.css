@@ -48,11 +48,10 @@ a:hover {
 .block {
     box-sizing: border-box;
     font-weight: bold;
-    overflow-wrap: break-word;
+    overflow-wrap: break-word; /* Виправлення для переносу слів */
 }
 
 .block1 {
-
     background-color: rgb(21, 21, 21);
     text-align: right;
 }
@@ -186,52 +185,58 @@ ul {
 
 @media (max-width: 768px) {
     
+    /* Дозволяємо сторінці прокручуватись */
     body, html {
         height: auto;
     }
 
     .container {
         height: auto;
-        min-height: 100vh;
+        min-height: 100vh; /* Контейнер мінімум висотою з екран */
     }
 
+    /* Прибираємо розтягування .main, щоб футер притиснувся */
     .main {
         flex-direction: column;
-        flex: none;
+        flex: none; 
     }
 
+    /* Колонки: змушуємо їх зайняти 100% ширини */
     .left-column,
     .center-column,
     .block4 {
         width: 100%;
     }
 
+    /* Робимо текст в шапці (blockX) і підвалі (blockY) по центру */
     .block1, .block7 {
         text-align: center;
+        padding: 0; /* Прибираємо padding з контейнерів */
     }
     
+    /* Притискаємо футер до низу */
     .block7 {
-        flex-basis: auto;
-        padding: 20px 10px;
+        flex-basis: auto; 
         margin-top: auto; 
     }
-    
+
     /* ================================
-      ОСЬ ВИРІШЕННЯ:
-      Ми скасовуємо позиціонування для хедера і футера,
-      щоб вони поводилися як звичайні елементи потоку.
+      ВИРІШЕННЯ ПРОБЛЕМИ "ВИЛІЗАННЯ"
+      Скидаємо стилі позиціонування та ширини з десктопної версії
       ================================
     */
     .blockX, .blockY {
-        font-size: clamp(24px, 8vw, 40px);
-        padding: 4vw;
-        position: static;   /* СКАСУВАТИ position: relative */
-        top: auto;          /* СКАСУВАТИ top: 50% */
-        transform: none;    /* СКАСУВАТИ transform */
+        font-size: clamp(24px, 8vw, 40px); /* робимо шрифт трохи більшим */
+        padding: 4vw 2vw; /* Задаємо відступи тут */
+        
+        display: block; /* Замість 'inline-block' */
+        max-width: 100%; /* Замість 'max-width: 80%' */
+        position: static; /* Скидаємо 'position: relative' */
+        transform: none; /* Скидаємо 'transform: translateY(-50%)' */
     }
     
     .block5 li, .block4 li {
-        font-size: clamp(16px, 4vw, 24px);
+        font-size: clamp(16px, 4vw, 24px); /* Збільшуємо шрифт в списках */
     }
 
     .block5 p {
@@ -248,6 +253,6 @@ ul {
     }
     
     ol, ul {
-        max-width: 90%;
+        max-width: 90%; /* Дозволяємо спискам бути трохи ширшими */
     }
 }
