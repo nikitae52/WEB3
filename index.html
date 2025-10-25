@@ -1,65 +1,267 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <title>Taschenratte</title>
-  <link href="styles.css" rel="stylesheet" type="text/css">
-  <style>
-    .block1, .block7 {
-      text-align: right;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100vh;
+    font-size: clamp(16px, 1.5vw, 24px);
+    background-color: rgb(28,28,30);
+}
+
+a {
+    color: #ffffff;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #929292;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.center-column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.block {
+    box-sizing: border-box;
+    font-weight: bold;
+    /* ================================
+      ВИРІШЕННЯ ПРОБЛЕМИ №1
+      Змінено 'anywhere' на 'break-word'.
+      Це запобігає "сирітським" буквам на новому рядку.
+      ================================
+    */
+    overflow-wrap: break-word;
+}
+
+.block1 {
+
+    background-color: rgb(21, 21, 21);
+    text-align: right;
+}
+
+.block2 {
+    flex: 0 0 auto;
+    background-color: rgb(21, 21, 21);
+    padding: 10px;
+}
+
+.block3 {
+    flex: 0 0 auto;
+    background-color: rgb(28,28,30);
+}
+
+.block4 {
+    width: 25%;
+    background-color: rgb(28,28,30);
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
+
+.block4 h2 {
+    font-size: clamp(18px, 2vw, 36px);
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Montserrat Bold', sans-serif;
+}
+
+.block5 {
+    flex: 0 0 auto;
+    background-color: rgb(28,28,30);
+    padding: 10px 10px 30px 10px;
+    margin-bottom: 20px;
+}
+
+.block5 li, .block4 li {
+    color: white;
+    margin: 20px 0;
+    padding-left: 0;
+    list-style-position: inside;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-size: clamp(5px, 2vw, 33px);
+}
+
+.block5 p {
+    font-size: clamp(14px, 2vw, 33px);
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.block6 {
+    font-family: "Anton", sans-serif;
+    font-size: clamp(13px, 2vw, 32px);
+    flex: 0 0 auto;
+    background-color: #000000;
+    color: white;
+    white-space: normal;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.block6 h1 {
+    font-size: clamp(20px, 2.5vw, 40px);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.block7 {
+    flex-basis: 10%;
+    background-color: rgb(21, 21, 21);
+    text-align: right;
+    padding: 10px;
+}
+
+.block img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blockX, .blockY {
+    font-size: clamp(20px, 4vw, 60px);
+    color: white;
+    padding: 2vw;
+    display: inline-block;
+    font-family: "Anton", sans-serif;
+    max-width: 80%;
+}
+
+.blockX {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.blockY {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+ol, ul {
+    padding-left: 1rem;
+    margin: 0 auto;
+    max-width: 80%;
+    text-align: left;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+/* ======================================= */
+/* МОБІЛЬНА ВЕРСІЯ (Завдання 4, 5) */
+/* ======================================= */
+
+@media (max-width: 768px) {
+    
+    /* Дозволяємо сторінці прокручуватись */
+    body, html {
+        height: auto;
     }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="block block1">
-      <div class="blockX">До бою, командире!</div>
-    </div>
-    <div class="main">
-      <div class="left-column">
-        <div class="block block2">
-          <img src="https://i.ibb.co/9krfFx5z/germany-small.png" alt="flag">
-        </div>
-        <div class="block block5">
-          <p>Нові танки ХІ рівня:</p>
-          <ul>
-            <li><a href="../flexbox/flexbox.html">Taschenratte</a></li>
-            <li><a href="../flexbox/flexbox.html">FV 4025 Contiver</a></li>
-            <li><a href="../flexbox/flexbox.html">Leopard 120 Verbessert</a></li>
-            <li><a href="../flexbox/flexbox.html">CS-67 Szakal</a></li>
-            <li><a href="../flexbox/flexbox.html">AT-FV230 Breaker</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="center-column">
-        <div class="block block3">
-          <img src="https://i.ibb.co/20YPy1Bn/tash.png" alt="tank" usemap="#tankmap">
-          <map name="tankmap">
-            <area shape="rect" coords="263,4,938,767" alt="Tank" href="https://worldoftanks.eu/uk/news/general-news/update-2-0-tier-11-heavy-tanks/">
-          </map>
-        </div>
-        <div class="block block6">
-          <h1>Особлива навичка</h1>
-          <p>Допоміжне озброєння: натискання кнопки активації запускає допоміжне озброєння вашої машини, що починає вести вогонь по цілі. Ця додаткова вогнева міць має власний цикл перезаряджання — незалежний від основної гармати.</p>
-        </div>
-      </div>
-      <div class="block block4">
-        <h2>Переваги та недоліки:</h2>
-        <ol>
-          <li>Потужна допоміжна зброя</li>
-          <li>Товста броня</li>
-          <li>Низька швидкість</li>
-          <li>Мала місткість боєкомплекту</li>
-          <li>Довгий час перезарядки</li>
-        </ol>
-      </div>
-    </div>
-    <div class="block block7">
-      <div class="blockY">Грай на новому рівні!</div>
-    </div>
-  </div>
-</body>
 
-</html>
+    .container {
+        height: auto;
+        min-height: 100vh; /* Контейнер мінімум висотою з екран */
+    }
 
+    /* ================================
+      ВИРІШЕННЯ ПРОБЛЕМИ №2 (Частина 1)
+      Ми забираємо у .main розтягування (flex: 1), 
+      щоб він займав лише висоту свого контенту.
+      ================================
+    */
+    .main {
+        flex-direction: column;
+        flex: none; /* Замість 'flex: 1' */
+    }
+
+    /* Колонки: змушуємо їх зайняти 100% ширини */
+    .left-column,
+    .center-column,
+    .block4 {
+        width: 100%;
+    }
+
+    /* Робимо текст в шапці (blockX) і підвалі (blockY) по центру */
+    .block1, .block7 {
+        text-align: center;
+    }
+    
+    /* ================================
+      ВИРІШЕННЯ ПРОБЛЕМИ №2 (Частина 2)
+      Додаємо 'margin-top: auto' до футера.
+      Це змусить його "відштовхнутися" від контенту
+      і притиснутися до самого низу контейнера.
+      ================================
+    */
+    .block7 {
+        flex-basis: auto; /* Автоматична висота для підвалу */
+        padding: 20px 10px;
+        margin-top: auto; 
+    }
+
+    /* Змінюємо розміри шрифтів для кращої читабельності на телефоні */
+    .blockX, .blockY {
+        font-size: clamp(24px, 8vw, 40px); /* робимо шрифт трохи більшим */
+        padding: 4vw;
+    }
+    
+    .block5 li, .block4 li {
+        font-size: clamp(16px, 4vw, 24px); /* Збільшуємо шрифт в списках */
+    }
+
+    .block5 p {
+        font-size: clamp(18px, 4.5vw, 26px);
+        padding-left: 10px;
+    }
+
+    .block6 h1 {
+        font-size: clamp(22px, 5vw, 30px);
+    }
+
+    .block6 {
+        font-size: clamp(16px, 4vw, 24px);
+    }
+    
+    ol, ul {
+        max-width: 90%; /* Дозволяємо спискам бути трохи ширшими */
+    }
+}
